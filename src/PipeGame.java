@@ -8,22 +8,25 @@ public class PipeGame {
 	private final static int DEFAULT_PIPE_LEVEL=1;
 	private int	waterLevel;
 	private int pipeLevel;
-	private Grid grid;
+	private Element startingPoint;
 	/**
 	 * Prepare a blank game
 	 */
 	public PipeGame(){
 		this.waterLevel=DEFAULT_WATER_LEVEL;
 		this.pipeLevel=DEFAULT_PIPE_LEVEL;
-		this.grid=new Grid();
+		this.startingPoint=new Element();
 	}
 	/**
 	 * Start a new game
 	 * @return true if win, false if loose
 	 */
 	boolean Start(){
-		
-		return false;
+		while(true){
+			if (waterLevel==pipeLevel){
+				return false;
+			}
+		}
 	}
 
 }
