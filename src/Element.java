@@ -5,7 +5,7 @@
  */
 public class Element {
 	private final static int DEFAULT_HEIGHT=9;
-	private final static int DEFAULT_S_Y=DEFAULT_HEIGHT/2;
+	private final static int DEFAULT_S_Y=DEFAULT_HEIGHT/2;//the middle of the right
 	private final static int DEFAULT_E_Y=1;
 	private int height;
 	private int width;
