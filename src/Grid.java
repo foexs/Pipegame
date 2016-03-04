@@ -1,17 +1,8 @@
 
 /**
- * A game's grid
+ * Represent a grid of a given size
  * @author foexs
- *
  */
 public class Grid {
-	/**
-	 * Make a grid
-	 * @param sizeH Height
-	 * @param sizeW Width
-	 */
-	Grid(int sizeH,int sizeW){
-		
-		
-	}
+
 }
