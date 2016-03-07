@@ -1,31 +1,35 @@
 
-// TODO rename class according to its description
+// TODO rename class according to its description(description changed)
 /**
- * Represent a grid of a given size
+ * Represent an element from the game
  * @author foexs
  */
 public class Element {
-	// TODO write comment
-	private final static int DEFAULT_HEIGHT=9;
+	// TODO write comment(removed)
+	//private final static int DEFAULT_WIDTH=21;
 	
-	// TODO write comment
-	private final static int DEFAULT_S_Y=DEFAULT_HEIGHT/2;//the middle of the right
+	// TODO write comment(removed)
+	//private final static int DEFAULT_HEIGHT=9;
 	
-	// TODO write comment
-	private final static int DEFAULT_E_Y=1;
+	// TODO write comment(removed)
+	//private final static int DEFAULT_S_X=DEFAULT_HEIGHT/2;
 	
-	// TODO write comment
-	private int height;
-
-	// TODO write comment
-	private int width;
+	// TODO write comment(removed)
+	//private final static int DEFAULT_E_X=1;
 	
-	// TODO fix comment by really commenting what this constructor creates
+	private String name;
+	// TODO fix comment by really commenting what this constructor creates(not needed)
 	/**
-	 * Generate a default starting point in the middle of the right
+	 * An element is labeled by name
+	 * @param givenName A name acting as an identifier for each elements
 	 */
-	public Element(){
-		this.height=DEFAULT_HEIGHT;
-		this.width=DEFAULT_S_Y;
+	public Element(String givenName){
+		this.name=givenName;
+	}
+	/**
+	 * @return the name of the object
+	 */
+	public String getName() {
+		return name;
 	}
 }

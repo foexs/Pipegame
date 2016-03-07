@@ -3,14 +3,14 @@
 // TODO fix comment (ask for advice)
 /**
  * Entry class
- * @author foexs
+ * @author FOEX Simon, POPEK Nicolas
  *
  */
 public class Main {
 
 	// TODO fix comment (what the purpose of args?)
 	/**
-	 * Entry point
+	 * Application's  mark
 	 * @param args
 	 */
 	public static void main(String[] args) {
