@@ -7,7 +7,13 @@
  *
  */
 public class Main {
+	/**
+	 * Default number of lines
+	 */
 	public static final int DEFAULT_GRID_Y=7;
+	/**
+	 * Default number of columns
+	 */
 	public static final int DEFAULT_GRID_X=7;
 	// TODO fix comment (what the purpose of args?)
 	/**

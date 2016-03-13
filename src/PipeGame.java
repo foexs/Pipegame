@@ -24,7 +24,8 @@ public class PipeGame {
 		grid= new Element[y+1][x+1];
 		for(int i=1;i<=y;i++){
 			for(int j=1;j<=x;j++){
-				grid[i][j]=new Element("P_O_E",i,j);
+				grid[i][j]=new Element("P_S_E",i,j);
+				System.out.println(grid[i][j].coordinateToString());
 			}
 		}
 	}
