@@ -1,5 +1,3 @@
-
-// TODO rename class according to its description(description changed)
 /**
  * Represent an element from the game
  * @author foexs
@@ -18,9 +16,11 @@ public class Element {
 	//private final static int DEFAULT_E_X=1;
 	
 	private String name;
-	// TODO fix comment by really commenting what this constructor creates(not needed)
 	/**
 	 * An element is labeled by name
+	 * There is 6 kind of pipes:
+	 * P_S_E;P_O_E;P_N_S;P_S_O;P_N_O;P_N_E
+	 * See the graph in the docs folder for details
 	 * @param givenName A name acting as an identifier for each elements
 	 */
 	public Element(String givenName){
