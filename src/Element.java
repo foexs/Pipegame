@@ -22,9 +22,13 @@ public class Element {
 	 * P_S_E;P_O_E;P_N_S;P_S_O;P_N_O;P_N_E
 	 * See the graph in the docs folder for details
 	 * @param givenName A name acting as an identifier for each elements
+	 * @param posY Knows its own position in the grid
+	 * @param posX Knows its own position in the grid
 	 */
-	public Element(String givenName){
+	public Element(String givenName, int posY, int posX){
 		this.name=givenName;
+	//	if (this.name=="P_S_E")
+	//		P_S_E Current = new P_S_E(2DDot)
 	}
 	/**
 	 * @return the name of the object

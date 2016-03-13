@@ -7,14 +7,15 @@
  *
  */
 public class Main {
-
+	public static final int DEFAULT_GRID_Y=7;
+	public static final int DEFAULT_GRID_X=7;
 	// TODO fix comment (what the purpose of args?)
 	/**
 	 * Application's  mark
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		if (new PipeGame().Start()){
+		if (new PipeGame(DEFAULT_GRID_Y,DEFAULT_GRID_X).Start()){
 			System.out.println("Victoire!");
 		}
 		else

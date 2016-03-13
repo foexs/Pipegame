@@ -6,28 +6,27 @@
  * @author foexs 
  */
 public class PipeGame {
-	
-	// TODO write comment(deleted)
-	//private final static int DEFAULT_WATER_LEVEL=-5;
-	
-	// TODO write comment(deleted)
-	//private final static int DEFAULT_PIPE_LEVEL=1;
-	
-	// TODO write comment(deleted)
-	//private int	waterLevel;
-	
-	// TODO write comment(deleted)
-	//private int pipeLevel;
-	
-	// TODO write comment(deleted)
-	//private Element startingPoint;
-
-	// TODO fix comment by detailing how is supposed to be a "blank" game
 	/**
-	 * Initializes a new game
+	 * A grid starts at 1;1 and ends at maxY;maxX
 	 */
-	public PipeGame(){
-		
+	private int maxY;
+	private int maxX;
+	Element [][] grid;
+	/**
+	 * Initializes a new game and fills the grid by filling it with "Element"
+	 * and makes the size of the grid [y+1,x+1]
+	 * @param y Line number
+	 * @param x Column number
+	 */
+	public PipeGame(int y,int x){
+		this.maxY=y;
+		this.maxX=x;
+		grid= new Element[y+1][x+1];
+		for(int i=1;i<=y;i++){
+			for(int j=1;j<=x;j++){
+				grid[i][j]=new Element("P_O_E",i,j);
+			}
+		}
 	}
 	
 	// TODO fix comment by detailing the main algorithm
@@ -37,6 +36,7 @@ public class PipeGame {
 	 * @return true if win, false if loose
 	 */
 	boolean Start(){
+		System.out.println(grid[maxY][maxX].getName());
 		/**
 		 * You loose
 		 */
