@@ -1,5 +1,5 @@
 /**
- * Is a pipe that have south and east inputs and can give the coordinates of the two direction you can connect to
+ * This is a pipe that have south and east inputs and can give the coordinates of the two direction you can connect to
  * @author simon
  */
 public class P_S_E extends Pipe {
