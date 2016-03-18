@@ -1,5 +1,3 @@
-
-// TODO update comment by adding a description of the game (link), in english
 /**
  * Represents a Pipe Game game. At the start of the game, click the covered
  * tiles to reveal them, and swap the positions of two tiles. Slowly, the hot
@@ -13,13 +11,42 @@ public class PipeGame
 	// TODO fix comment (ask for advice)
 	/**
 	 * A grid starts at 1;1 and ends at maxY;maxX
+	 * Game's grid line number
 	 */
 	private int maxY;
-
-	// TODO write comment
+	/**
+	 * Code for the pipe kind
+	 */
+	public static final int NORTH_EAST = 1;
+	/**
+	 * Code for the pipe kind
+	 */
+	public static final int	NORTH_SOUTH = 2;
+	/**
+	 * Code for the pipe kind
+	 */
+	public static final int	NORTH_WEST = 3;
+	/**
+	 * Code for the pipe kind
+	 */
+	public static final int	SOUTH_EAST = 4;
+	/**
+	 * Code for the pipe kind
+	 */
+	public static final int SOUTH_WEST =5;
+	/**
+	 * Code for the pipe kind
+	 */
+	public static final int	EAST_WEST =6;
+	
+	/**
+	 * Game's grid column number
+	 */
 	private int maxX;
 
-	// TODO write comment
+	/**
+	 * The game's grid filled with game elements like pipes.
+	 */
 	Element[][] grid;
 
 	// TODO
@@ -36,33 +63,32 @@ public class PipeGame
 		this.maxY = y;
 		this.maxX = x;
 		
-		grid = new Element[y + 1][x + 1];
+		this.grid = new Element[y + 1][x + 1];
 		
-		// TODO rename loop counters
+		// TODO Everything here
 		for (int i = 1; i <= y; i++)
 		{
 			for (int j = 1; j <= x; j++)
 			{
-				grid[i][j] = new Element("P_S_E", i, j);
-				System.out.println(grid[i][j].coordinateToString());
+				this.grid[i][j] = new ();
+				System.out.println(this.grid[i][j].coordinateToString());
 			}
 		}
 	}
 
 	// TODO fix comment by detailing the main algorithm
 	/**
-	 * Plays the game It contains the main algorithm that allows the user to
-	 * play.
-	 * 
+	 * Plays the game It contains the main algorithm that allows the user to play.
 	 * @return true if win, false if loose
 	 */
 	// TODO add visibility
 	// TODO rename method (is is not only about starting the game)
-	boolean Start()
+	public boolean play()
 	{
-		System.out.println(grid[maxY][maxX].getName());
+		System.out.println(this.grid[this.maxY][this.maxX].getName());
 
 		return false;
 	}
+
 
 }

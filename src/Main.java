@@ -17,7 +17,7 @@ public class Main {
 	 * @param args command-line arguments (unused)
 	 */
 	public static void main(String[] args) {
-		if (new PipeGame(DEFAULT_GRID_Y,DEFAULT_GRID_X).Start()){
+		if (new PipeGame(DEFAULT_GRID_Y,DEFAULT_GRID_X).play()){
 			System.out.println("Victoire!");
 		}
 		else
