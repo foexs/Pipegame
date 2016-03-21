@@ -15,30 +15,6 @@ public class PipeGame
 	 */
 	private int maxY;
 	/**
-	 * Code for the pipe kind
-	 *
-	public static final int NORTH_EAST = 1;
-	 *
-	 * Code for the pipe kind
-	 *
-	public static final int	NORTH_SOUTH = 2;
-	 *
-	 * Code for the pipe kind
-	 *
-	public static final int	NORTH_WEST = 3;
-	 *
-	 * Code for the pipe kind
-	 *
-	public static final int	SOUTH_EAST = 4;
-	 *
-	 * Code for the pipe kind
-	 *
-	public static final int SOUTH_WEST =5;
-	 *
-	 * Code for the pipe kind
-	 *
-	public static final int	EAST_WEST =6;
-	 *
 	 * Game's grid column number
 	 */
 	private int maxX;
@@ -46,7 +22,7 @@ public class PipeGame
 	/**
 	 * The game's grid filled with game elements like pipes.
 	 */
-	Element[][] grid;
+	Board grid;
 
 	// TODO
 	/**
@@ -62,19 +38,35 @@ public class PipeGame
 		this.maxY = y;
 		this.maxX = x;
 		
-		this.grid = new Element[y][x];
+
 		
 		// TODO Everything here
-		for (int i = 1; i < y; i++)
+		
+	}
+	/**
+	 * Method used to define the grid's content with random elements
+	 */
+	public void randomGrid()
+	{
+		for (int i = 1; i < this.maxY; i++)
 		{
-			for (int j = 1; j < x; j++)
+			for (int j = 1; j < this.maxX; j++)
 			{
-				this.grid[i][j] = new Element(PipeConnection.SOUTH_WEST);
+				
 			}
 		}
 	}
 
-	// TODO fix comment by detailing the main algorithm
+	
+	public void fillProceduralGrid(){
+		int colonneActuelle;
+		int ligneActuelle;
+		for (colonneActuelle = 0; colonneActuelle< this.maxY; colonneActuelle++){
+			for(ligneActuelle = 0; ligneActuelle < this.maxX; ligneActuelle++){
+							
+			}
+		}
+	}
 	/**
 	 * Plays the game It contains the main algorithm that allows the user to play.
 	 * @return true if win, false if loose
