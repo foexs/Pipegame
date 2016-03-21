@@ -16,30 +16,29 @@ public class PipeGame
 	private int maxY;
 	/**
 	 * Code for the pipe kind
-	 */
+	 *
 	public static final int NORTH_EAST = 1;
-	/**
+	 *
 	 * Code for the pipe kind
-	 */
+	 *
 	public static final int	NORTH_SOUTH = 2;
-	/**
+	 *
 	 * Code for the pipe kind
-	 */
+	 *
 	public static final int	NORTH_WEST = 3;
-	/**
+	 *
 	 * Code for the pipe kind
-	 */
+	 *
 	public static final int	SOUTH_EAST = 4;
-	/**
+	 *
 	 * Code for the pipe kind
-	 */
+	 *
 	public static final int SOUTH_WEST =5;
-	/**
+	 *
 	 * Code for the pipe kind
-	 */
+	 *
 	public static final int	EAST_WEST =6;
-	
-	/**
+	 *
 	 * Game's grid column number
 	 */
 	private int maxX;
@@ -63,15 +62,14 @@ public class PipeGame
 		this.maxY = y;
 		this.maxX = x;
 		
-		this.grid = new Element[y + 1][x + 1];
+		this.grid = new Element[y][x];
 		
 		// TODO Everything here
-		for (int i = 1; i <= y; i++)
+		for (int i = 1; i < y; i++)
 		{
-			for (int j = 1; j <= x; j++)
+			for (int j = 1; j < x; j++)
 			{
-				this.grid[i][j] = new ();
-				System.out.println(this.grid[i][j].coordinateToString());
+				this.grid[i][j] = new Element(PipeConnection.SOUTH_WEST);
 			}
 		}
 	}
@@ -81,11 +79,8 @@ public class PipeGame
 	 * Plays the game It contains the main algorithm that allows the user to play.
 	 * @return true if win, false if loose
 	 */
-	// TODO add visibility
-	// TODO rename method (is is not only about starting the game)
 	public boolean play()
 	{
-		System.out.println(this.grid[this.maxY][this.maxX].getName());
 
 		return false;
 	}

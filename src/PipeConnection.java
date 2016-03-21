@@ -3,30 +3,30 @@
 	 * P_S_E;P_O_E;P_N_S;P_S_O;P_N_O;P_N_E See the graph in the docs folder for
 	 * details
 	 */
-public enum Pipe {
+public enum PipeConnection {
 	/**
 	 * Link south and west
 	 */
-	southWest,
+	SOUTH_WEST,
 	/**
 	 * Link south and east
 	 */
-	southEast,
+	SOUTH_EAST,
 	/**
-	 * Link south and west
+	 * Link north and west
 	 */
-	northWest,
+	NORTH_WEST,
 	/**
 	 * link north and east
 	 */
-	northEast,
+	NOTH_EAST,
 	/**
 	 * link north and south
 	 */
-	northSouth,
+	NORTH_SOUTH,
 	/**
 	 * link west and east
 	 */
-	westEast;
+	WEST_EAST;
 	
 }
