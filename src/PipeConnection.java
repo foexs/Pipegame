@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 /**
 	 *There are 6 kinds of pipes:
 	 * P_S_E;P_O_E;P_N_S;P_S_O;P_N_O;P_N_E See the graph in the docs folder for
@@ -28,5 +30,12 @@ public enum PipeConnection {
 	 * link west and east
 	 */
 	WEST_EAST;
+	
+	/**
+	 * @return One of the PipeConnection randomly selected
+	 */
+	public static PipeConnection getRandomValue(){
+		return values()[(int)(Math.random()*5)];
+	}
 	
 }

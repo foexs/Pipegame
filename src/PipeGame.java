@@ -5,7 +5,8 @@
  * 
  * @author foexs
  */
-public class PipeGame
+
+public class PipeGame 
 {
 
 	// TODO fix comment (ask for advice)
@@ -22,7 +23,7 @@ public class PipeGame
 	/**
 	 * The game's grid filled with game elements like pipes.
 	 */
-	Board grid;
+	Element[][] grid;
 
 	// TODO
 	/**
@@ -37,8 +38,7 @@ public class PipeGame
 	{
 		this.maxY = y;
 		this.maxX = x;
-		
-
+		this.grid = new Element[x][y];
 		
 		// TODO Everything here
 		
@@ -53,6 +53,7 @@ public class PipeGame
 			for (int j = 1; j < this.maxX; j++)
 			{
 				
+				this.grid[i][j]=new Element(PipeConnection.getRandomValue());
 			}
 		}
 	}

@@ -13,12 +13,13 @@ public class Element
 	/**
 	 * True if the tile is visible, false if tile is hidden
 	 */
-	private boolean visibility = false;
+	private boolean visibility;
 	
 	/**
 	 * The pipe's type
 	 */
 	private PipeConnection pipeType;
+	
 	/**
 	 * Create an invisible element using the type code
 	 * @param connection name of the pipe's kind
@@ -26,7 +27,9 @@ public class Element
 	 */
 	public Element(PipeConnection connection) {
 	this.visibility=false;
+	this.pipeType=connection;
 	}
+		
 	/**
 	 * @return true if the element was discovered
 	 */
