@@ -9,33 +9,50 @@ public enum PipeConnection {
 	/**
 	 * Link south and west
 	 */
-	SOUTH_WEST,
+	SOUTH_WEST("╗"),
 	/**
 	 * Link south and east
 	 */
-	SOUTH_EAST,
+	SOUTH_EAST("╔"),
 	/**
 	 * Link north and west
 	 */
-	NORTH_WEST,
+	NORTH_WEST("╝"),
 	/**
 	 * link north and east
 	 */
-	NOTH_EAST,
+	NOTH_EAST("╚"),
 	/**
 	 * link north and south
 	 */
-	NORTH_SOUTH,
+	NORTH_SOUTH("║"),
 	/**
 	 * link west and east
 	 */
-	WEST_EAST;
+	WEST_EAST("═");
 	
+	/**
+	 * The character representing the PipeConnection
+	 */
+	private String AsciiChar;
+	
+	/**
+	 * @param Ascii the character representing the PipeConnection
+	 */
+	private PipeConnection(String Ascii){
+		this.AsciiChar = Ascii;
+	}
 	/**
 	 * @return One of the PipeConnection randomly selected
 	 */
 	public static PipeConnection getRandomValue(){
 		return values()[(int)(Math.random()*5)];
+	}
+	/**
+	 * @return the ASCII representation of this pipe's kind
+	 */
+	public String toAscii() {
+		return this.AsciiChar;
 	}
 	
 }

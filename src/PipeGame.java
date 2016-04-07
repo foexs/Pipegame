@@ -48,9 +48,9 @@ public class PipeGame
 	 */
 	public void randomGrid()
 	{
-		for (int i = 1; i < this.maxY; i++)
+		for (int i = 0; i < this.maxY; i++)
 		{
-			for (int j = 1; j < this.maxX; j++)
+			for (int j = 0; j < this.maxX; j++)
 			{
 				
 				this.grid[i][j]=new Element(PipeConnection.getRandomValue());
@@ -68,13 +68,28 @@ public class PipeGame
 			}
 		}
 	}
+	
+	/**
+	 * Prints the grid to the screen in the console
+	 */
+	public void printGridToAscii(){
+		int i;
+		int j;
+		for (i=0;i<this.maxX;i++){
+			for (j=0;j<this.maxY;j++){
+				System.out.println(this.grid[i][j].getPipeType().toAscii());
+			}
+			System.out.println("\n");
+		}
+		}
 	/**
 	 * Plays the game It contains the main algorithm that allows the user to play.
 	 * @return true if win, false if loose
 	 */
 	public boolean play()
 	{
-
+		randomGrid();
+		printGridToAscii();
 		return false;
 	}
 
