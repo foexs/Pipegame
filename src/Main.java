@@ -7,7 +7,7 @@ public class Main {
 	/**
 	 * Default number of lines
 	 */
-	public static final int DEFAULT_GRID_Y=7;
+	public static final int DEFAULT_GRID_Y=25;
 	/**
 	 * Default number of columns
 	 */

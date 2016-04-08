@@ -38,10 +38,22 @@ public class PipeGame
 	{
 		this.maxY = y;
 		this.maxX = x;
-		this.grid = new Element[x][y];
+		this.grid = new Element[y][x];
 		
 		// TODO Everything here
 		
+	}
+	/**
+	 * @return true if the game is over
+	 */
+	public boolean GameIsOver()
+	{
+		//TODO
+	}
+	
+	public void AskForTile()
+	{
+		//TODO
 	}
 	/**
 	 * Method used to define the grid's content with random elements
@@ -59,12 +71,16 @@ public class PipeGame
 	}
 
 	
+	/**
+	 * In progress
+	 * Fill the grid with tiles allowing the player to win
+	 */
 	public void fillProceduralGrid(){
 		int colonneActuelle;
 		int ligneActuelle;
 		for (colonneActuelle = 0; colonneActuelle< this.maxY; colonneActuelle++){
 			for(ligneActuelle = 0; ligneActuelle < this.maxX; ligneActuelle++){
-							
+						//TODO	
 			}
 		}
 	}
@@ -73,26 +89,77 @@ public class PipeGame
 	 * Prints the grid to the screen in the console
 	 */
 	public void printGridToAscii(){
-		int i;
+		int y;
+		int x;
 		String grid="";
-		int j;
 		
-		for (i=0;i<this.maxX;i++){
-			for (j=0;j<this.maxY;j++){
-				grid=grid+this.grid[i][j].getPipeType().toAscii();
+		for (x=0;x<this.maxX;x++){
+			for (y=0;y<this.maxY;y++){
+				grid=grid+this.grid[y][x].getPipeType().toAscii();
 			}
 			grid=grid+"\n";
 		}
 		System.out.println(grid);
 		}
 	/**
-	 * Plays the game It contains the main algorithm that allows the user to play.
+	 * Plays the game
+	 * 
+	 * while (<game is not over>)
+	 * {
+	 *    <display grid>
+	 *  
+	 *    do
+	 *    {
+	 *    	<ask player to select a tile>
+	 *    }
+	 *    while (tile is not valid)
+	 *    
+	 *    if (tile is not discovered)
+	 *    {
+	 *    	<discover the tile>
+	 *    }
+	 *    else
+	 *    {
+	 *     	do
+	 *    	{
+	 *    		<ask player to select a tile>
+	 *    	}
+	 *      while (tile is not valid)
+	 *      <swap tiles>
+	 *    }
+	 *    <liquid flows>
+	 * }
+	 * 
 	 * @return true if win, false if loose
 	 */
 	public boolean play()
 	{
 		randomGrid();
-		printGridToAscii();
+		while (GameIsOver()==false)
+		{
+			printGridToAscii();
+			do
+			{
+				AskForTile();
+			}
+			while (tile is not valid)
+			     
+			if (tile is not discovered)
+			{
+			  	//<discover the tile>
+			}
+			else
+			{
+			   	do
+			   	{
+			   		//<ask player to select a tile>
+			   	}
+			    while (tile is not valid)
+			    {
+			    //   <swap tiles>
+			    }
+			 //<liquid flows>
+			 }
 		return false;
 	}
 
