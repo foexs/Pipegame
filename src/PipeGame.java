@@ -74,13 +74,16 @@ public class PipeGame
 	 */
 	public void printGridToAscii(){
 		int i;
+		String grid="";
 		int j;
+		
 		for (i=0;i<this.maxX;i++){
 			for (j=0;j<this.maxY;j++){
-				System.out.println(this.grid[i][j].getPipeType().toAscii());
+				grid=grid+this.grid[i][j].getPipeType().toAscii();
 			}
-			System.out.println("\n");
+			grid=grid+"\n";
 		}
+		System.out.println(grid);
 		}
 	/**
 	 * Plays the game It contains the main algorithm that allows the user to play.
