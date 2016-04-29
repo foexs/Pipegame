@@ -21,12 +21,18 @@ public class Element
 	private PipeConnection pipeType;
 	
 	/**
+	 * If true, the pipe is Full.
+	 */
+	private boolean isFull;
+	
+	/**
 	 * Create an invisible element using the type code
 	 * @param connection name of the pipe's kind
 	 * 
 	 */
 	public Element(PipeConnection connection) {
 	this.visibility=false;
+	this.setFull(false);
 	this.pipeType=connection;
 	}
 		
@@ -42,5 +48,19 @@ public class Element
 	 */
 	public PipeConnection getPipeType() {
 		return this.pipeType;
+	}
+
+	/**
+	 * @return true if the pipe is full
+	 */
+	public boolean isFull() {
+		return this.isFull;
+	}
+
+	/**
+	 * @param isFull used to change the water level.
+	 */
+	public void setFull(boolean isFull) {
+		this.isFull = isFull;
 	}
 	}

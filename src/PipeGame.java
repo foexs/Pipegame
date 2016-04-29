@@ -50,10 +50,20 @@ public class PipeGame
 	{
 		//TODO
 	}
+
 	
-	public void AskForTile()
-	{
-		//TODO
+	/**
+	 * @param currentTile the coordinates of the 
+	 * @return true if the element is in the grid and empty
+	 */
+	public boolean TileIsValid(Dot currentTile){
+		
+		if(currentTile.x<0 || currentTile.x>=this.maxX)
+			return false;
+		if (currentTile.y<0 || currentTile.y>=this.maxY)
+			return false;
+		if(this.grid[currentTile.y][currentTile.x].isFull())
+			return false;
 	}
 	/**
 	 * Method used to define the grid's content with random elements
@@ -101,6 +111,7 @@ public class PipeGame
 		}
 		System.out.println(grid);
 		}
+	
 	/**
 	 * Plays the game
 	 * 
@@ -135,16 +146,18 @@ public class PipeGame
 	public boolean play()
 	{
 		randomGrid();
-		while (GameIsOver()==false)
+		Dot selectedTile;
+		while (!GameIsOver())
 		{
 			printGridToAscii();
+			
 			do
 			{
-				AskForTile();
+				selectedTile= Player.AskForTile();
 			}
-			while (tile is not valid)
+			while (!TileIsValid(selectedTile));
 			     
-			if (tile is not discovered)
+			if (grid[selectedTile.y][selectedTile.x].isVisible())
 			{
 			  	//<discover the tile>
 			}
@@ -154,7 +167,7 @@ public class PipeGame
 			   	{
 			   		//<ask player to select a tile>
 			   	}
-			    while (tile is not valid)
+			    while (!TileIsValid(selectedTile))
 			    {
 			    //   <swap tiles>
 			    }
