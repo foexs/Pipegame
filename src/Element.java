@@ -63,4 +63,11 @@ public class Element
 	public void setFull(boolean isFull) {
 		this.isFull = isFull;
 	}
+	/**
+	 * Changes the element's visibility
+	 */
+	public void discover()
+	{
+		this.visibility = true;
+	}
 	}

@@ -19,6 +19,11 @@ public class PipeGame
 	 * Game's grid column number
 	 */
 	private int maxX;
+	
+	/**
+	 * Is used to know the last position of the fluid.
+	 */
+	private Dot lastFluidPosition;
 
 	/**
 	 * The game's grid filled with game elements like pipes.
@@ -39,16 +44,23 @@ public class PipeGame
 		this.maxY = y;
 		this.maxX = x;
 		this.grid = new Element[y][x];
+		this.lastFluidPosition = new Dot(this.maxY-1,0);
 		
-		// TODO Everything here
+		// TODO No longer everything.
 		
 	}
+	
 	/**
 	 * @return true if the game is over
 	 */
 	public boolean GameIsOver()
 	{
+		return false;
 		//TODO
+	}
+	
+	public void liquidFlows(){
+		
 	}
 
 	
@@ -64,6 +76,9 @@ public class PipeGame
 			return false;
 		if(this.grid[currentTile.y][currentTile.x].isFull())
 			return false;
+		if(!this.grid[currentTile.y][currentTile.x].isVisible())
+			return false;
+		return true;
 	}
 	/**
 	 * Method used to define the grid's content with random elements
@@ -95,6 +110,16 @@ public class PipeGame
 		}
 	}
 	
+	/**
+	 * @param firstTile  Dot that represents the first tile, on which the second'll be.
+	 * @param secondTile  Dot that represents the second tile, on which the first'll be.
+	 * Swap tiles.
+	 */
+	public void swapTiles(Dot firstTile, Dot secondTile){
+		Element buffer = this.grid[firstTile.y][firstTile.x];
+	    this.grid[firstTile.y][firstTile.x] = this.grid[secondTile.y][secondTile.x];
+	    this.grid[secondTile.y][secondTile.x] = buffer;
+	}
 	/**
 	 * Prints the grid to the screen in the console
 	 */
@@ -157,24 +182,27 @@ public class PipeGame
 			}
 			while (!TileIsValid(selectedTile));
 			     
-			if (grid[selectedTile.y][selectedTile.x].isVisible())
+			if (!this.grid[selectedTile.y][selectedTile.x].isVisible())
 			{
-			  	//<discover the tile>
+				this.grid[selectedTile.y][selectedTile.x].discover();
 			}
 			else
 			{
+				Dot secondSelectedTile;
 			   	do
 			   	{
-			   		//<ask player to select a tile>
+			   		secondSelectedTile= Player.AskForTile();
 			   	}
-			    while (!TileIsValid(selectedTile))
+			    while (!TileIsValid(secondSelectedTile));
 			    {
-			    //   <swap tiles>
+			    swapTiles(selectedTile, secondSelectedTile);
 			    }
 			 //<liquid flows>
 			 }
+			
+		}
 		return false;
-	}
+}
 
 
 }
