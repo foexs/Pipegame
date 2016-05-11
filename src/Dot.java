@@ -33,4 +33,11 @@ public int getX() {
 public int getY() {
 	return this.y;
 }
+/**
+ * @param secondDot another dot
+ * @return sum of the dot's coordinates
+ */
+public Dot addDot(Dot secondDot){
+	return new Dot(this.x+secondDot.x,this.y+secondDot.y);
+}
 }

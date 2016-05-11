@@ -25,6 +25,8 @@ public class Element
 	 */
 	private boolean isFull;
 	
+	
+	
 	/**
 	 * Create an invisible element using the type code
 	 * @param connection name of the pipe's kind

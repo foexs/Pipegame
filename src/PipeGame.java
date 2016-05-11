@@ -59,8 +59,48 @@ public class PipeGame
 		//TODO
 	}
 	
-	public void liquidFlows(){
+	/**
+	 * @return true if it succeeds
+	 */
+	public boolean liquidFlows(){
+		/**
+		 * A dot, the location of the first pipe's output
+		 */
+		Dot firstOut = this.grid[this.lastFluidPosition.y][this.lastFluidPosition.x].getPipeType().getOutput1().addDot(this.lastFluidPosition);
 		
+		/**
+		 * A dot, the location of the second pipe's output
+		 */
+		Dot secondOut = this.grid[this.lastFluidPosition.y][this.lastFluidPosition.x].getPipeType().getOutput2().addDot(this.lastFluidPosition);
+		
+		/**
+		 * Selected pipe used later, secondOut or firstOut
+		 */
+		Dot nextPipe=null;
+		
+		if (TileIsValid(firstOut)){
+			//The first pipe's output is free
+			nextPipe=firstOut;
+		}
+		else if (TileIsValid(secondOut)){
+			//The second pipe's output is free
+			nextPipe=secondOut;
+		}
+		else{
+			//There is no valid output: YOU LOSE! Shame on you, noob! :p
+			return false;
+		}
+		
+		if (!this.grid[nextPipe.y][nextPipe.x].getPipeType().getOutput1().addDot(nextPipe).equals(this.lastFluidPosition)
+			||
+			!this.grid[nextPipe.y][nextPipe.x].getPipeType().getOutput2().addDot(nextPipe).equals(this.lastFluidPosition))
+			{
+				//next pipe is oriented so the liquid can flow ;)
+				this.grid[nextPipe.y][nextPipe.x].setFull(true);
+				return true;
+			}
+		//The free pipe ahead is not well oriented, the liquid leaks, you lose.
+		return false;
 	}
 
 	
