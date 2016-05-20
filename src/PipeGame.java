@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Represents a Pipe Game game. At the start of the game, click the covered
  * tiles to reveal them, and swap the positions of two tiles. Slowly, the hot
@@ -116,9 +118,20 @@ public class PipeGame
 			return false;
 		if(this.grid[currentTile.y][currentTile.x].isFull())
 			return false;
-		if(!this.grid[currentTile.y][currentTile.x].isVisible())
-			return false;
 		return true;
+	}
+	
+	/**
+	 * @param currentTile current tile
+	 * @return true if the tile is valid AND visible
+	 */
+	public boolean tileIsValidAndVisible(Dot currentTile){
+		if(TileIsValid(currentTile)){
+			if(!this.grid[currentTile.y][currentTile.x].isVisible()){
+				return true;
+			}
+		}
+	return false;
 	}
 	/**
 	 * Method used to define the grid's content with random elements
@@ -164,15 +177,30 @@ public class PipeGame
 	 * Prints the grid to the screen in the console
 	 */
 	public void printGridToAscii(){
-		int y;
+		int y=0;
 		int x;
-		String grid="";
+		String grid=" ";
 		
+		/**
+		 *Display the HUD for X 
+		 */
 		for (x=0;x<this.maxX;x++){
-			for (y=0;y<this.maxY;y++){
-				grid=grid+this.grid[y][x].getPipeType().toAscii();
+			grid+=x;
+		}
+		
+		/**
+		 * 
+		 */
+		for (y=0;y<this.maxY;y++){
+			grid+="\n"+y;
+			for (x=0;x<this.maxX;x++){
+				if (this.grid[y][x].isVisible()){
+					grid+=this.grid[y][x].getPipeType().toAscii();
+				}
+				else{
+					grid+="?";
+				}
 			}
-			grid=grid+"\n";
 		}
 		System.out.println(grid);
 		}
@@ -211,6 +239,7 @@ public class PipeGame
 	public boolean play()
 	{
 		randomGrid();
+		Scanner input=new Scanner(System.in);
 		Dot selectedTile;
 		while (!GameIsOver())
 		{
@@ -218,7 +247,7 @@ public class PipeGame
 			
 			do
 			{
-				selectedTile= Player.AskForTile();
+				selectedTile= Player.AskForTile(input);
 			}
 			while (!TileIsValid(selectedTile));
 			     
@@ -231,7 +260,7 @@ public class PipeGame
 				Dot secondSelectedTile;
 			   	do
 			   	{
-			   		secondSelectedTile= Player.AskForTile();
+			   		secondSelectedTile= Player.AskForTile(input);
 			   	}
 			    while (!TileIsValid(secondSelectedTile));
 			    {

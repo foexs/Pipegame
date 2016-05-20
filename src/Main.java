@@ -7,11 +7,11 @@ public class Main {
 	/**
 	 * Default number of lines
 	 */
-	public static final int DEFAULT_GRID_Y=25;
+	public static final int DEFAULT_GRID_Y=7;
 	/**
 	 * Default number of columns
 	 */
-	public static final int DEFAULT_GRID_X=7;
+	public static final int DEFAULT_GRID_X=9;
 	/**
 	 * Application's  main
 	 * @param args command-line arguments (unused)
