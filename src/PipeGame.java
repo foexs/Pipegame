@@ -1,4 +1,3 @@
-import java.util.Scanner;
 
 /**
  * Represents a Pipe Game game. At the start of the game, click the covered
@@ -30,7 +29,12 @@ public class PipeGame
 	/**
 	 * The game's grid filled with game elements like pipes.
 	 */
-	Element[][] grid;
+	private Element[][] grid;
+	
+	/**
+	 * the number of turns before the liquid starts to flow
+	 */
+	private int freeTurnLeft;
 
 	// TODO
 	/**
@@ -46,7 +50,8 @@ public class PipeGame
 		this.maxY = y;
 		this.maxX = x;
 		this.grid = new Element[y][x];
-		this.lastFluidPosition = new Dot(this.maxY-1,0);
+		this.lastFluidPosition = new Dot(0,0);
+		this.freeTurnLeft=4;
 		
 		// TODO No longer everything.
 		
@@ -69,12 +74,13 @@ public class PipeGame
 		 * A dot, the location of the first pipe's output
 		 */
 		Dot firstOut = this.grid[this.lastFluidPosition.y][this.lastFluidPosition.x].getPipeType().getOutput1().addDot(this.lastFluidPosition);
-		
 		/**
 		 * A dot, the location of the second pipe's output
 		 */
 		Dot secondOut = this.grid[this.lastFluidPosition.y][this.lastFluidPosition.x].getPipeType().getOutput2().addDot(this.lastFluidPosition);
-		
+		System.out.println(firstOut.toString());
+		System.out.println(secondOut.toString());
+
 		/**
 		 * Selected pipe used later, secondOut or firstOut
 		 */
@@ -93,12 +99,13 @@ public class PipeGame
 			return false;
 		}
 		
-		if (!this.grid[nextPipe.y][nextPipe.x].getPipeType().getOutput1().addDot(nextPipe).equals(this.lastFluidPosition)
+		if (this.grid[nextPipe.y][nextPipe.x].getPipeType().getOutput1().addDot(nextPipe).equals(this.lastFluidPosition)
 			||
-			!this.grid[nextPipe.y][nextPipe.x].getPipeType().getOutput2().addDot(nextPipe).equals(this.lastFluidPosition))
+			this.grid[nextPipe.y][nextPipe.x].getPipeType().getOutput2().addDot(nextPipe).equals(this.lastFluidPosition))
 			{
 				//next pipe is oriented so the liquid can flow ;)
 				this.grid[nextPipe.y][nextPipe.x].setFull(true);
+				this.lastFluidPosition=(new Dot(nextPipe.x,nextPipe.y));
 				return true;
 			}
 		//The free pipe ahead is not well oriented, the liquid leaks, you lose.
@@ -127,7 +134,7 @@ public class PipeGame
 	 */
 	public boolean tileIsValidAndVisible(Dot currentTile){
 		if(TileIsValid(currentTile)){
-			if(!this.grid[currentTile.y][currentTile.x].isVisible()){
+			if(this.grid[currentTile.y][currentTile.x].isVisible()){
 				return true;
 			}
 		}
@@ -177,6 +184,7 @@ public class PipeGame
 	 * Prints the grid to the screen in the console
 	 */
 	public void printGridToAscii(){
+		//only works on linux (utf)
 		int y=0;
 		int x;
 		String grid=" ";
@@ -197,8 +205,12 @@ public class PipeGame
 				if (this.grid[y][x].isVisible()){
 					grid+=this.grid[y][x].getPipeType().toAscii();
 				}
+				else if (this.grid[y][x].isFull()){
+					grid+="#";
+				}
 				else{
 					grid+="?";
+
 				}
 			}
 		}
@@ -239,15 +251,17 @@ public class PipeGame
 	public boolean play()
 	{
 		randomGrid();
-		Scanner input=new Scanner(System.in);
-		Dot selectedTile;
+		Player player=new Humain();
+		
+		Dot selectedTile=new Dot(-1,-1);
 		while (!GameIsOver())
 		{
 			printGridToAscii();
 			
 			do
 			{
-				selectedTile= Player.AskForTile(input);
+				selectedTile= player.AskForTile();
+				
 			}
 			while (!TileIsValid(selectedTile));
 			     
@@ -257,17 +271,23 @@ public class PipeGame
 			}
 			else
 			{
-				Dot secondSelectedTile;
+				Dot secondSelectedTile=new Dot(-1,-1);
 			   	do
 			   	{
-			   		secondSelectedTile= Player.AskForTile(input);
+					secondSelectedTile= player.AskForTile();
 			   	}
-			    while (!TileIsValid(secondSelectedTile));
+			    while (!tileIsValidAndVisible(secondSelectedTile));
 			    {
 			    swapTiles(selectedTile, secondSelectedTile);
 			    }
-			 //<liquid flows>
-			 }
+			}
+			System.out.println(this.freeTurnLeft);
+		    if (this.freeTurnLeft>0){
+		    	this.freeTurnLeft--;
+		    }
+		    else{
+				if(!liquidFlows()) return false;    
+		    }
 			
 		}
 		return false;

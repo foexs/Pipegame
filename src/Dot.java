@@ -40,4 +40,7 @@ public int getY() {
 public Dot addDot(Dot secondDot){
 	return new Dot(this.x+secondDot.x,this.y+secondDot.y);
 }
+public String toString(){
+	return "x:"+this.x+" y:"+this.y;
+}
 }
